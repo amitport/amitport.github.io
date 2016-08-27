@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+		"target": "es6",
+		"module": "system"
+    },
+    "exclude": [
+        "node_modules"
+    ],
+    "files": [
+		"./src/index.ts",
+		"./src/_references.d.ts"
+	]
+}
