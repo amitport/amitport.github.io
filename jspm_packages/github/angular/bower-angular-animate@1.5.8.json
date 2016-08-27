@@ -1,0 +1,11 @@
+{
+  "main": "angular-animate",
+  "meta": {
+    "angular-animate.js": {
+      "deps": [
+        "angular"
+      ],
+      "format": "global"
+    }
+  }
+}

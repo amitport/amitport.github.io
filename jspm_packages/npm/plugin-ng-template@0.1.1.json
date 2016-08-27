@@ -1,0 +1,9 @@
+{
+  "main": "ng-template.js",
+  "format": "cjs",
+  "meta": {
+    "*.json": {
+      "format": "json"
+    }
+  }
+}

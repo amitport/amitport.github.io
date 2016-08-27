@@ -3,12 +3,22 @@
   "private": true,
   "author": "Amit Portnoy <amit.portnoy@gmail.com> (https://github.com/amitport)",
   "homepage": "https://amitport.github.io",
+  "scripts": {
+    "serve": "http-server"
+  },
   "devDependencies": {
+    "http-server": "^0.9.0",
     "jspm": "^0.17.0-beta.28"
   },
   "jspm": {
     "name": "amitport.github.io",
     "main": "amitport.github.io.js",
+    "dependencies": {
+      "angular": "github:angular/bower-angular@^1.5.8",
+      "angular-material": "github:angular/bower-material@^1.1.0",
+      "css": "github:systemjs/plugin-css@^0.1.27",
+      "ng-template": "npm:plugin-ng-template@^0.1.1"
+    },
     "devDependencies": {
       "assert": "github:jspm/nodelibs-assert@^0.2.0-alpha",
       "buffer": "github:jspm/nodelibs-buffer@^0.2.0-alpha",
@@ -27,6 +37,66 @@
       "vm": "github:jspm/nodelibs-vm@^0.2.0-alpha"
     },
     "overrides": {
+      "github:angular/bower-angular-animate@1.5.8": {
+        "main": "angular-animate",
+        "registry": "jspm",
+        "dependencies": {
+          "angular": "^1.3.0"
+        },
+        "meta": {
+          "angular-animate.js": {
+            "deps": [
+              "angular"
+            ],
+            "format": "global"
+          }
+        }
+      },
+      "github:angular/bower-angular-aria@1.5.8": {
+        "main": "angular-aria",
+        "registry": "jspm",
+        "dependencies": {
+          "angular": "^1.3.0"
+        },
+        "meta": {
+          "angular-aria.js": {
+            "deps": [
+              "angular"
+            ],
+            "format": "global"
+          }
+        }
+      },
+      "github:angular/bower-angular@1.5.8": {
+        "main": "angular",
+        "meta": {
+          "angular.js": {
+            "exports": "angular",
+            "format": "global"
+          }
+        }
+      },
+      "github:angular/bower-material@1.1.0": {
+        "main": "angular-material",
+        "registry": "jspm",
+        "dependencies": {
+          "angular": "^1.5.0",
+          "angular-animate": "^1.5.0",
+          "angular-aria": "^1.5.0",
+          "css": "^0.1.0"
+        },
+        "meta": {
+          "angular-material.js": {
+            "deps": [
+              "./angular-material.css!",
+              "angular",
+              "angular-animate",
+              "angular-aria"
+            ],
+            "format": "global"
+          }
+        }
+      },
       "npm:inherits@2.0.1": {
         "ignore": [
           "test.js"

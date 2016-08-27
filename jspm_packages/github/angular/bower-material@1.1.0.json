@@ -1,0 +1,15 @@
+{
+  "main": "angular-material",
+  "format": "cjs",
+  "meta": {
+    "angular-material.js": {
+      "deps": [
+        "./angular-material.css!",
+        "angular",
+        "angular-animate",
+        "angular-aria"
+      ],
+      "format": "global"
+    }
+  }
+}
