@@ -4,6 +4,7 @@
   "author": "Amit Portnoy <amit.portnoy@gmail.com> (https://github.com/amitport)",
   "homepage": "https://amitport.github.io",
   "scripts": {
+    "bundle": "jspm bundle amitport -im",
     "serve": "http-server"
   },
   "devDependencies": {
