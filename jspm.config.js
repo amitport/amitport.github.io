@@ -5,28 +5,7 @@ SystemJS.config({
     "amitport/": "src/"
   },
   browserConfig: {
-    "baseURL": "/",
-    "bundles": {
-      "build.js": [
-        "amitport/index.ts",
-        "amitport/main-component.ts",
-        "amitport/main.css!github:systemjs/plugin-css@0.1.27/css.js",
-        "github:systemjs/plugin-css@0.1.27.json",
-        "amitport/main.html!npm:plugin-ng-template@0.1.1/ng-template.js",
-        "github:angular/bower-angular@1.5.8/angular.js",
-        "github:angular/bower-angular@1.5.8.json",
-        "npm:plugin-ng-template@0.1.1.json",
-        "amitport/module.ts",
-        "github:angular/bower-material@1.1.0/angular-material.js",
-        "github:angular/bower-material@1.1.0.json",
-        "github:angular/bower-angular-aria@1.5.8/angular-aria.js",
-        "github:angular/bower-angular-aria@1.5.8.json",
-        "github:angular/bower-angular-animate@1.5.8/angular-animate.js",
-        "github:angular/bower-angular-animate@1.5.8.json",
-        "github:angular/bower-material@1.1.0/angular-material.css!github:systemjs/plugin-css@0.1.27/css.js",
-        "github:frankwallis/plugin-typescript@5.0.19.json"
-      ]
-    }
+    "baseURL": "/"
   },
   transpiler: "plugin-typescript",
   typescriptOptions: {
@@ -55,7 +34,8 @@ SystemJS.config({
     "angular": "github:angular/bower-angular@1.5.8",
     "angular-material": "github:angular/bower-material@1.1.0",
     "css": "github:systemjs/plugin-css@0.1.27",
-    "ng-template": "npm:plugin-ng-template@0.1.1"
+    "ng-template": "npm:plugin-ng-template@0.1.1",
+    "short-number": "npm:short-number@1.0.6"
   },
   packages: {
     "github:angular/bower-material@1.1.0": {

@@ -500,5 +500,9 @@
       "assert": "github:jspm/nodelibs-assert@^0.2.0-alpha",
       "buffer": "github:jspm/nodelibs-buffer@^0.2.0-alpha"
     }
+  },
+  "npm:short-number@1.0.6": {
+    "deps": {},
+    "peerDeps": {}
   }
 }

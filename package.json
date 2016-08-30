@@ -18,7 +18,8 @@
       "angular": "github:angular/bower-angular@^1.5.8",
       "angular-material": "github:angular/bower-material@^1.1.0",
       "css": "github:systemjs/plugin-css@^0.1.27",
-      "ng-template": "npm:plugin-ng-template@^0.1.1"
+      "ng-template": "npm:plugin-ng-template@^0.1.1",
+      "short-number": "npm:short-number@^1.0.6"
     },
     "devDependencies": {
       "assert": "github:jspm/nodelibs-assert@^0.2.0-alpha",

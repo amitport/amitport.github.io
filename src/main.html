@@ -1,7 +1,48 @@
-<div layout layout-align="center center" layout-fill
-    md-colors="{background: 'primary-hue-2'}">
-    <div>
-        <md-icon md-colors="{background: 'primary-hue-2'}">person_pin</md-icon>
-        Amit Portnoy
+<div layout="column" layout-align="center" layout-fill
+   md-colors="{background: 'primary-hue-2'}">
+    <div layout="row" layout-align="center">
+        <div>
+            <md-icon md-colors="{background: 'primary-hue-2'}">person_pin</md-icon>
+            Amit Portnoy
+        </div>
+    </div>
+<div layout="row" layout-padding>
+    <div layout="column" flex-offset-xs="20" flex-xs="60" flex-offset="25" flex="50">
+        
+        <a md-button layout="row" layout-align="space-between center" class="md-raised" ng-disabled="!$ctrl.profiles.stackOverflow.link" ng-href="{{::$ctrl.profiles.stackOverflow.link}}">
+            <md-tooltip md-delay="700">Stack Exchange Profile</md-tooltip>
+            <img width="30" height="30" src="//cdn.sstatic.net/Sites/stackoverflow/company/img/logos/so/so-icon.png">
+            
+            <small layout="row" layout-align="start center" style="text-transform: initial; text-align: initial; line-height: initial;">
+                <div ng-switch="$ctrl.profiles.stackOverflow.loading">
+                    <md-progress-circular md-diameter="8px" ng-switch-when="true"></md-progress-circular>
+                    <strong ng-switch-when="false">{{$ctrl.profiles.stackOverflow.reputation | shortNumber}}</strong>
+                </div>                
+                <div style="margin-left: 6px">Reputation</div>
+            </small>
+        </a>
+        <a md-button layout="row" layout-align="space-between center" class="md-raised" ng-disabled="!$ctrl.profiles.stackOverflow.link" ng-href="{{::$ctrl.profiles.github.link}}">
+            <md-tooltip md-delay="700">Github Profile</md-tooltip>
+            <img style="margin-right:6px" width="20" height="20" src="src/GitHub-Mark-32px.png">
+            <small style="text-transform: initial; text-align: initial; line-height: initial;">
+                <div layout="column">
+                    <div layout="row" layout-align="start center">
+                        <div ng-switch="$ctrl.profiles.github.loading">
+                            <md-progress-circular md-diameter="8px" ng-switch-when="true"></md-progress-circular>
+                            <strong ng-switch-when="false">{{$ctrl.profiles.github.publicRepos}}</strong>
+                        </div>
+                        <div style="margin-left: 5px">Repositories</div>
+                    </div>
+                    <div layout="row" layout-align="start center">
+                        <div ng-switch="$ctrl.profiles.github.loading">
+                            <md-progress-circular md-diameter="8px" ng-switch-when="true"></md-progress-circular>
+                            <strong ng-switch-when="false">{{$ctrl.profiles.github.followers}}</strong>
+                        </div>
+                        <div style="margin-left: 5px">Followers</div>
+                    </div>
+                </div>
+            </small>
+        </a>
+    </div>
     </div>
 </div>
