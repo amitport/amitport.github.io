@@ -10,7 +10,7 @@
     <div layout="column" flex-offset-xs="20" flex-xs="60" flex-offset="25" flex="50">
         
         <a md-button layout="row" layout-align="space-between center" class="md-raised" ng-disabled="!$ctrl.profiles.stackOverflow.link" ng-href="{{::$ctrl.profiles.stackOverflow.link}}">
-            <md-tooltip md-delay="700">Stack Exchange Profile</md-tooltip>
+            <md-tooltip md-direction="left" md-delay="700">Stack Exchange Profile</md-tooltip>
             <img width="30" height="30" src="//cdn.sstatic.net/Sites/stackoverflow/company/img/logos/so/so-icon.png">
             
             <small layout="row" layout-align="start center" style="text-transform: initial; text-align: initial; line-height: initial;">
@@ -22,7 +22,7 @@
             </small>
         </a>
         <a md-button layout="row" layout-align="space-between center" class="md-raised" ng-disabled="!$ctrl.profiles.stackOverflow.link" ng-href="{{::$ctrl.profiles.github.link}}">
-            <md-tooltip md-delay="700">Github Profile</md-tooltip>
+            <md-tooltip md-direction="left" md-delay="700">Github Profile</md-tooltip>
             <img style="margin-right:6px" width="20" height="20" src="src/GitHub-Mark-32px.png">
             <small style="text-transform: initial; text-align: initial; line-height: initial;">
                 <div layout="column">
