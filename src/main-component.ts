@@ -2,10 +2,13 @@ import module from './module';
 import mainTemplate from './main.html!ng-template';
 import './main.css!';
 
+import katex from 'katex';
+
 module
 .component('main', {
     templateUrl: mainTemplate.templateUrl,
-    controller: ['$http', function($http) {
+    controller: ['$http', '$sce', function($http, $sce) {
+        this.katexTest = $sce.trustAsHtml(katex.renderToString('x^2'));
         this.profiles = {
             stackOverflow: {
                 loading: true

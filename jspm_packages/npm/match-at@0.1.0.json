@@ -1,0 +1,9 @@
+{
+  "main": "lib/matchAt.js",
+  "format": "cjs",
+  "meta": {
+    "*.json": {
+      "format": "json"
+    }
+  }
+}

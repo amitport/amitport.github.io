@@ -10,8 +10,11 @@ SystemJS.config({
       "build.js": [
         "amitport/index.ts",
         "amitport/main-component.ts",
-        "amitport/main.css!github:systemjs/plugin-css@0.1.27/css.js",
+        "npm:katex@0.6.0/dist/katex.min.js",
+        "npm:katex@0.6.0.json",
+        "npm:katex@0.6.0/dist/katex.min.css!github:systemjs/plugin-css@0.1.27/css.js",
         "github:systemjs/plugin-css@0.1.27.json",
+        "amitport/main.css!github:systemjs/plugin-css@0.1.27/css.js",
         "amitport/main.html!npm:plugin-ng-template@0.1.1/ng-template.js",
         "github:angular/bower-angular@1.5.8/angular.js",
         "github:angular/bower-angular@1.5.8.json",
@@ -57,6 +60,7 @@ SystemJS.config({
     "angular": "github:angular/bower-angular@1.5.8",
     "angular-material": "github:angular/bower-material@1.1.0",
     "css": "github:systemjs/plugin-css@0.1.27",
+    "katex": "npm:katex@0.6.0",
     "ng-template": "npm:plugin-ng-template@0.1.1",
     "short-number": "npm:short-number@1.0.6"
   },
@@ -77,6 +81,11 @@ SystemJS.config({
     "github:angular/bower-angular-animate@1.5.8": {
       "map": {
         "angular": "github:angular/bower-angular@1.5.8"
+      }
+    },
+    "npm:katex@0.6.0": {
+      "map": {
+        "match-at": "npm:match-at@0.1.0"
       }
     }
   }
