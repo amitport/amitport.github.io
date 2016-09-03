@@ -3,12 +3,33 @@ import mainTemplate from './main.html!ng-template';
 import './main.css!';
 
 import katex from 'katex';
+import hljs from 'highlightjs';
+import 'highlightjs/styles/darcula.css!';
 
 module
+.directive('katex', function() {
+    return {
+        restrict: 'E',
+        scope: {},
+        link: function(scope, element) {
+            katex.render(element.text(), element[0]);
+        }
+    };
+})
+.directive('highlight', function() {
+    return {
+        restrict: 'A',
+        scope: {},
+        link: function(scope, element) {
+            hljs.highlightBlock(element[0]);
+        }
+    };
+})
 .component('main', {
     templateUrl: mainTemplate.templateUrl,
     controller: ['$http', '$sce', function($http, $sce) {
-        this.katexTest = $sce.trustAsHtml(katex.renderToString('x^2'));
+        // console.log(hljs.highlightBlock('var x;'));
+        // this.katexTest = $sce.trustAsHtml(katex.renderToString('x^2'));
         this.profiles = {
             stackOverflow: {
                 loading: true

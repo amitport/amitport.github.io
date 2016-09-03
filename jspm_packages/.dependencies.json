@@ -514,5 +514,9 @@
   "npm:match-at@0.1.0": {
     "deps": {},
     "peerDeps": {}
+  },
+  "github:components/highlightjs@9.6.0": {
+    "deps": {},
+    "peerDeps": {}
   }
 }
