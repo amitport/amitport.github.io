@@ -16,7 +16,7 @@
     "main": "amitport.github.io.js",
     "dependencies": {
       "angular": "github:angular/bower-angular@^1.5.8",
-      "angular-material": "github:angular/bower-material@^1.1.0",
+      "angular-material": "github:angular/bower-material@^1.1.1",
       "css": "github:systemjs/plugin-css@^0.1.27",
       "highlightjs": "github:components/highlightjs@^9.6.0",
       "katex": "npm:katex@^0.6.0",
@@ -80,7 +80,7 @@
           }
         }
       },
-      "github:angular/bower-material@1.1.0": {
+      "github:angular/bower-material@1.1.1": {
         "main": "angular-material",
         "registry": "jspm",
         "dependencies": {
