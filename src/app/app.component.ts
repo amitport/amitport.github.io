@@ -3,12 +3,11 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    <p>
-      app Works!
-    </p>
-    <router-outlet></router-outlet>
-  `,
-  styles: []
+      <app-layout>
+          <app-side class="layout-side"></app-side>
+          <router-outlet class="layout-main"></router-outlet>
+      </app-layout>
+  `
 })
 export class AppComponent {
   title = 'app';
