@@ -7,7 +7,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { LayoutComponent } from './layout/layout.component';
 import { SideComponent } from './side/side.component';
 import { Page1Component } from './page1/page1.component';
-import { MatButtonModule, MatCardModule, MatGridListModule, MatIconModule, MatProgressSpinnerModule } from '@angular/material';
+import {
+    MatButtonModule, MatCardModule, MatGridListModule, MatIconModule, MatListModule,
+    MatProgressSpinnerModule
+} from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import { ShortNumberPipe } from './short-number.pipe';
 
@@ -31,6 +34,7 @@ import { ShortNumberPipe } from './short-number.pipe';
     MatIconModule,
     MatButtonModule,
     MatGridListModule,
+    MatListModule,
     MatProgressSpinnerModule,
   ],
   providers: [],
