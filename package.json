@@ -6,7 +6,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod --base-href \"https://amitport.github.io/\"",
+    "build": "ng build --prod --base-href https://amitport.github.io/",
     "deploy": "ngh --no-silent --branch master",
     "test": "ng test",
     "lint": "ng lint",
