@@ -25,7 +25,6 @@
     "@angular/platform-browser": "^4.2.4",
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
-    "angular-cli-ghpages": "^0.5.1",
     "core-js": "^2.4.1",
     "rxjs": "^5.4.2",
     "short-number": "^1.0.6",
@@ -35,6 +34,7 @@
     "@angular/cli": "1.4.4",
     "@angular/compiler-cli": "^4.2.4",
     "@angular/language-service": "^4.2.4",
+    "angular-cli-ghpages": "^0.5.1",
     "typescript": "~2.3.3"
   }
 }

@@ -21,10 +21,6 @@ export class Page1Component implements OnInit {
       description: 'Online environment for coding card games',
       url: 'http://www.cardforest.com'
   }, {
-      title: 'version-nagger',
-      description: 'an electron app that pulls node and npm package updates',
-      url: 'https://github.com/amitport/version-nagger'
-  }, {
       title: 'amitport.github.io',
       description: 'the source for this page',
       url: 'https://github.com/amitport/amitport.github.io/tree/source'
@@ -36,6 +32,10 @@ export class Page1Component implements OnInit {
       title: 'trustpack',
       description: 'a decentralized trust management framework',
       url: 'http://onlinelibrary.wiley.com/doi/10.1002/spe.2226/abstract'
+  }, {
+      title: 'version-update-nagger',
+      description: 'an electron app that pulls node and npm package updates',
+      url: 'https://github.com/amitport/version-update-nagger'
   }, {
       title: 'turned-based',
       description: 'a collection of multi-player games— Four-in-a-line, Israeli Whist, and Tic-tac-toe',
@@ -71,7 +71,7 @@ export class Page1Component implements OnInit {
   }, {
       title: 'IsraDoc.com',
       description: 'Israel doctor index—WIP',
-      url: 'http://wwww.isradoc.com'
+      url: 'http://www.isradoc.com'
   }
   ];
 
