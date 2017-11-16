@@ -29,7 +29,7 @@ export class Page1Component implements OnInit {
       description: 'a decentralized graph database',
       url: 'https://code.google.com/archive/p/graphpack/'
   }, {
-      title: 'trustpack',
+      title: 'TrustPack',
       description: 'a decentralized trust management framework',
       url: 'http://onlinelibrary.wiley.com/doi/10.1002/spe.2226/abstract'
   }, {
@@ -72,6 +72,10 @@ export class Page1Component implements OnInit {
       title: 'IsraDoc.com',
       description: 'Israel doctor index—WIP',
       url: 'http://www.isradoc.com'
+  }, {
+      title: 'Snake-cube solver',
+      description: 'Android app for solving snake cube puzzles',
+      url: 'Android app for solving snake cube puzzle'
   }
   ];
 
