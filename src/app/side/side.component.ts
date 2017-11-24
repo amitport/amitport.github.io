@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 @Component({
     selector: 'app-side',
     template: `
-        <mat-card style="padding: 0;" fxLayout="column" fxFill fxLayoutAlign="space-between stretch">
+        <mat-card style="padding: 0;" fxLayout="column" fxFill fxLayoutAlign="space-between stretch" fxHide.xs>
             <div class="header" style="margin: 16px;" fxLayout fxLayoutAlign="start center" fxLayoutGap="4px">
                 <mat-icon>person_pin</mat-icon>
                 <span style="font-size: 16px;">Amit Portnoy</span>

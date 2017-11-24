@@ -6,11 +6,8 @@ import { AppComponent } from './app.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { LayoutComponent } from './layout/layout.component';
 import { SideComponent } from './side/side.component';
-import { Page1Component } from './page1/page1.component';
-import {
-    MatButtonModule, MatCardModule, MatGridListModule, MatIconModule, MatListModule,
-    MatProgressSpinnerModule
-} from '@angular/material';
+import { ProjectShowcaseComponent } from './project-showcase/project-showcase.component';
+import { MatButtonModule, MatCardModule, MatGridListModule, MatIconModule, MatProgressSpinnerModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import { ShortNumberPipe } from './short-number.pipe';
 
@@ -19,7 +16,7 @@ import { ShortNumberPipe } from './short-number.pipe';
     AppComponent,
     LayoutComponent,
     SideComponent,
-    Page1Component,
+    ProjectShowcaseComponent,
     ShortNumberPipe
   ],
   imports: [
@@ -34,7 +31,6 @@ import { ShortNumberPipe } from './short-number.pipe';
     MatIconModule,
     MatButtonModule,
     MatGridListModule,
-    MatListModule,
     MatProgressSpinnerModule,
   ],
   providers: [],
