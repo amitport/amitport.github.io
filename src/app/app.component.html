@@ -1,10 +1,23 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h2>
-    Amit Portnoy's personal page
+  <h2 fxLayout fxLayoutAlign="center center" fxLayoutGap="4px">
+    <span>Amit Portnoy</span><mat-icon>person_pin</mat-icon>
   </h2>
 </div>
 
 <div style="padding:16px;">
+  <h3>Profiles</h3>
+  <div fxLayoutGap="8px">
+    <a href="https://www.linkedin.com/in/amit-portnoy" mat-stroked-button>
+      LinkedIn (résumé)
+    </a>
+    <a href="https://github.com/amitport" mat-stroked-button>
+      GitHub
+    </a>
+    <a href="https://stackoverflow.com/users/990421" mat-stroked-button>
+      Stack Overflow
+    </a>
+  </div>
+
+  <h3>Selected Projects</h3>
   <app-project-list></app-project-list>
 </div>
