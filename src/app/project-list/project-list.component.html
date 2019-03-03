@@ -1,0 +1,15 @@
+<h3>Projects</h3>
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="16px grid">
+  <div *ngFor="let project of PROJECTS">
+    <mat-card fxFlex="1 0 200px">
+      <mat-card-title>{{project.title}}</mat-card-title>
+      <mat-card-content>
+        {{project.description}}
+      </mat-card-content>
+      <mat-card-actions fxLayoutGap="8px">
+        <a *ngFor="let link of project.links"  [href]="link.url" mat-stroked-button color="primary">{{link.kind}}</a>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <!--<mat-card fxFlex="1 0 200px" *ngFor="let project of PROJECTS">{{project.title}}</mat-card>-->
+</div>

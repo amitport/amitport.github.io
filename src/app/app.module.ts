@@ -3,37 +3,27 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProjectListComponent } from './project-list/project-list.component';
+import { MatButtonModule, MatCardModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { LayoutComponent } from './layout/layout.component';
-import { SideComponent } from './side/side.component';
-import { ProjectShowcaseComponent } from './project-showcase/project-showcase.component';
-import { MatButtonModule, MatCardModule, MatGridListModule, MatIconModule, MatProgressSpinnerModule } from '@angular/material';
-import { HttpClientModule } from '@angular/common/http';
-import { ShortNumberPipe } from './short-number.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutComponent,
-    SideComponent,
-    ProjectShowcaseComponent,
-    ShortNumberPipe
+    ProjectListComponent
   ],
   imports: [
     BrowserModule,
-    FlexLayoutModule,
-
-    HttpClientModule,
-
     AppRoutingModule,
+    BrowserAnimationsModule,
 
+    FlexLayoutModule,
     MatCardModule,
-    MatIconModule,
     MatButtonModule,
-    MatGridListModule,
-    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

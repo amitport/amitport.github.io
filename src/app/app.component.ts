@@ -2,13 +2,9 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: `
-      <app-layout>
-          <app-side class="layout-side"></app-side>
-          <router-outlet class="layout-main"></router-outlet>
-      </app-layout>
-  `
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'amitport';
 }
