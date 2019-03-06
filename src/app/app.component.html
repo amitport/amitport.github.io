@@ -6,26 +6,19 @@
   </h2>
 </header>
 
-<div style="padding: 16px 16px 42px 16px;">
-  <h3>Profiles</h3>
-  <div fxLayoutGap="8px">
-    <a href="https://www.linkedin.com/in/amit-portnoy" mat-stroked-button>
-      LinkedIn
-    </a>
-    <a href="https://github.com/amitport" mat-stroked-button>
-      GitHub
-    </a>
-    <a href="https://stackoverflow.com/users/990421" mat-stroked-button>
-      Stack Overflow
-    </a>
-  </div>
+<nav mat-tab-nav-bar color="primary">
+  <a mat-tab-link
+     *ngFor="let link of [{path: 'about', label: 'about me'}, {path: 'projects', label: 'selected personal projects'}]"
+     [routerLink]="link.path"
+     routerLinkActive #rla="routerLinkActive"
+     [active]="rla.isActive">
+    {{link.label}}
+  </a>
+</nav>
 
-  <h3>Selected personal projects</h3>
-  <app-project-list></app-project-list>
+<div style="padding: 16px 16px 42px 16px;">
+  <router-outlet></router-outlet>
 </div>
 
-<footer class="mat-typography" style="padding: 1.93em;" fxLayout fxLayoutAlign="start center">
-  <span>Email me at <a rel="me" href="mailto:amit.portnoy@gmail.com">amit.portnoy@gmail.com</a></span>
-</footer>
 
 
