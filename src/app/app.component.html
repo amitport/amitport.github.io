@@ -6,9 +6,13 @@
   </h2>
 </header>
 
-<nav mat-tab-nav-bar color="primary">
+<nav mat-tab-nav-bar color="primary" mat-align-tabs="center">
   <a mat-tab-link
-     *ngFor="let link of [{path: 'about', label: 'about me'}, {path: 'projects', label: 'selected personal projects'}]"
+     *ngFor="let link of [
+       {path: 'about', label: 'About me'},
+       {path: 'projects', label: 'Selected personal projects'},
+       {path: 'research', label: 'Research'}
+     ]"
      [routerLink]="link.path"
      routerLinkActive #rla="routerLinkActive"
      [active]="rla.isActive">

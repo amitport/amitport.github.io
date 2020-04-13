@@ -17,13 +17,13 @@ export function app() {
   // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
   server.engine('html', ngExpressEngine({
     bootstrap: AppServerModule,
-  }) as any);
+  }));
 
   server.set('view engine', 'html');
   server.set('views', distFolder);
 
   // Example Express Rest API endpoints
-  // app.get('/api/**', (req, res) => { });
+  // server.get('/api/**', (req, res) => { });
   // Serve static files from /browser
   server.get('*.*', express.static(distFolder, {
     maxAge: '1y'

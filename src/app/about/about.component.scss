@@ -1,0 +1,11 @@
+h3 {
+  border-left: 2px solid #424242;
+  padding-left: 16px;
+}
+p {
+  padding-left: 8px;
+
+  &:not(:last-child) {
+    padding-bottom: 24px;
+  }
+}

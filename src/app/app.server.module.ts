@@ -11,9 +11,6 @@ import { FlexLayoutServerModule } from '@angular/flex-layout/server';
     ServerModule,
     FlexLayoutServerModule,
   ],
-  providers: [
-    // Add universal-only providers here
-  ],
-  bootstrap: [ AppComponent ],
+  bootstrap: [AppComponent],
 })
 export class AppServerModule {}

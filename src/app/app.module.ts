@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule }       from '@angular/core';
-import { AppComponent }         from './app.component';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProjectListComponent } from './project-list/project-list.component';
 import { MatButtonModule } from '@angular/material/button';
@@ -10,23 +10,30 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AboutComponent } from './about/about.component';
 import { RouterModule } from '@angular/router';
+import { ResearchComponent } from './research/research.component';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
     AppComponent,
+    AboutComponent,
     ProjectListComponent,
-    AboutComponent
+    ResearchComponent,
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'amitport' }),
+    BrowserModule.withServerTransition({appId: 'amitport'}),
     RouterModule.forRoot([
-      { path: 'about', component: AboutComponent, pathMatch: 'full'},
-      { path: 'projects', component: ProjectListComponent, pathMatch: 'full'},
-      { path: '',
+      {path: 'about', component: AboutComponent, pathMatch: 'full'},
+      {path: 'projects', component: ProjectListComponent, pathMatch: 'full'},
+      {path: 'research', component: ResearchComponent, pathMatch: 'full'},
+      {
+        path: '',
         redirectTo: 'about',
         pathMatch: 'full'
       },
-    ]),
+    ], {
+      initialNavigation: 'enabled'
+    }),
 
     BrowserAnimationsModule,
 
@@ -35,6 +42,7 @@ import { RouterModule } from '@angular/router';
     MatButtonModule,
     MatIconModule,
     MatTabsModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [ AppComponent ]
