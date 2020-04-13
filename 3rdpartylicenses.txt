@@ -82,6 +82,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
+@angular/forms
+MIT
+
 @angular/material
 MIT
 The MIT License
@@ -115,7 +118,7 @@ MIT
 
 core-js
 MIT
-Copyright (c) 2014-2019 Denis Pushkarev
+Copyright (c) 2014-2020 Denis Pushkarev
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -371,7 +374,7 @@ zone.js
 MIT
 The MIT License
 
-Copyright (c) 2010-2019 Google LLC. http://angular.io/license
+Copyright (c) 2010-2020 Google LLC. http://angular.io/license
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
