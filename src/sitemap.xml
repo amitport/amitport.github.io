@@ -3,13 +3,12 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://amitport.github.io/</loc>
-  </url>
-  <url>
     <loc>https://amitport.github.io/about/</loc>
   </url>
   <url>
     <loc>https://amitport.github.io/projects/</loc>
   </url>
-
+  <url>
+    <loc>https://amitport.github.io/research/</loc>
+  </url>
 </urlset>

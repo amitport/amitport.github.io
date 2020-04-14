@@ -15,7 +15,7 @@
     "serve:ssr": "node dist/amitport/server/main.js",
     "serve:ssr:dev": "ng run amitport:serve-ssr:production",
     "build:ssr": "npm run build:client-and-server-bundles",
-    "publish": "ng deploy --no-build --branch=master"
+    "publish": "ng deploy --no-build --no-silent --branch=master"
   },
   "dependencies": {
     "@angular/animations": "~9.1.1",
