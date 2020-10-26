@@ -12,7 +12,7 @@ import { existsSync } from 'fs';
 export function app(): express.Express {
   const server = express();
   const distFolder = join(process.cwd(), 'dist/amitport/browser');
-  const indexHtml = existsSync(join(distFolder, 'src/home.html')) ? 'src/home.html' : 'index.html';
+  const indexHtml = existsSync(join(distFolder, 'src/home.html')) ? 'src/home.html' : 'index';
 
   // Our Universal express-engine (found @ https://github.com/angular/universal/tree/master/modules/express-engine)
   server.engine('html', ngExpressEngine({
@@ -37,7 +37,7 @@ export function app(): express.Express {
   return server;
 }
 
-function run() {
+function run(): void {
   const port = process.env.PORT || 4000;
 
   // Start up the Node server
