@@ -1,5 +1,5 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProjectListComponent } from './project-list/project-list.component';
@@ -47,5 +47,4 @@ import { MatListModule } from '@angular/material/list';
   providers: [],
   bootstrap: [ AppComponent ]
 })
-export class AppModule {
-}
+export class AppModule { }
