@@ -21,7 +21,7 @@ import { MatListModule } from '@angular/material/list';
     ResearchComponent,
   ],
   imports: [
-    BrowserModule.withServerTransition({appId: 'amitport'}),
+    BrowserModule.withServerTransition({appId: 'serverApp'}),
     RouterModule.forRoot([
       {path: 'about', component: AboutComponent, pathMatch: 'full'},
       {path: 'projects', component: ProjectListComponent, pathMatch: 'full'},
@@ -32,7 +32,7 @@ import { MatListModule } from '@angular/material/list';
         pathMatch: 'full'
       },
     ], {
-      initialNavigation: 'enabled'
+      initialNavigation: 'enabledBlocking'
     }),
 
     BrowserAnimationsModule,
@@ -45,6 +45,7 @@ import { MatListModule } from '@angular/material/list';
     MatListModule,
   ],
   providers: [],
-  bootstrap: [ AppComponent ]
+  bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
