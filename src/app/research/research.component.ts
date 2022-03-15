@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
       <mat-list-item>
         <div matLine><a href="https://arxiv.org/abs/2110.02065">SDR: Efficient Neural Re-ranking using Succinct Document Representation</a></div>
         <small matLine>N Cohen<sup>*</sup>, A Portnoy<sup>*</sup>, B Fetahu, A Ingber</small>
-        <small matLine>>ACL '22</small>
+        <small matLine>ACL '22</small>
         <small matLine>(* Equal contribution)</small>
       </mat-list-item>
       <mat-list-item>
