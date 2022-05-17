@@ -5,6 +5,12 @@ import { Component, OnInit } from '@angular/core';
   template: `
     <mat-list>
       <mat-list-item>
+        <div matLine><a href="https://arxiv.org/abs/2108.08842">EDEN: Communication-Efficient and Robust Distributed Mean Estimation for Federated Learning</a></div>
+        <small matLine>S Vargaftik<sup>*</sup>, R Ben-Basat<sup>*</sup>, A Portnoy<sup>*</sup>, G Mendelson, Y Ben-Itzhak, M Mitzenmacher</small>
+        <small matLine>ICML '22</small>
+        <small matLine>(* Equal contribution)</small>
+      </mat-list-item>
+      <mat-list-item>
         <div matLine><a href="https://arxiv.org/abs/2110.02065">SDR: Efficient Neural Re-ranking using Succinct Document Representation</a></div>
         <small matLine>N Cohen<sup>*</sup>, A Portnoy<sup>*</sup>, B Fetahu, A Ingber</small>
         <small matLine>ACL '22</small>
