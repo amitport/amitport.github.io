@@ -1,0 +1,120 @@
+---
+import { site } from '../data/site';
+---
+
+<section id="about" class="section section--intro">
+  <div class="container">
+    <h1 class="hero-name">{site.author}</h1>
+    <p class="hero-bio">{site.bio}</p>
+
+    <ul class="profile-links" aria-label="Profiles and contact">
+      <li>
+        <a href={site.social.linkedin} target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path
+              fill="currentColor"
+              d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.78C.8 0 0 .78 0 1.74v20.52C0 23.22.8 24 1.78 24h20.44c.98 0 1.78-.78 1.78-1.74V1.74C24 .78 23.2 0 22.22 0Z"
+            />
+          </svg>
+          <span>LinkedIn</span>
+        </a>
+      </li>
+      <li>
+        <a href={site.social.github} target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path
+              fill="currentColor"
+              d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55 0-.27-.01-1.18-.02-2.14-3.2.69-3.87-1.36-3.87-1.36-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.69.08-.69 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.69 1.24 3.34.95.1-.74.4-1.24.73-1.53-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.16 1.18a10.96 10.96 0 0 1 5.76 0c2.2-1.49 3.16-1.18 3.16-1.18.62 1.58.23 2.75.11 3.04.74.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.26 5.68.41.36.78 1.07.78 2.16 0 1.56-.01 2.81-.01 3.19 0 .31.21.67.8.55C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5Z"
+            />
+          </svg>
+          <span>GitHub</span>
+        </a>
+      </li>
+      <li>
+        <a href={site.social.scholar} target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path
+              fill="currentColor"
+              d="M12 1 0 9l5 3.66V13l7 5.1L19 13v-.34L21 11.2V18h2V9L12 1Zm0 16-7-5.1V11l7 5.1L19 11v.9L12 17Z"
+            />
+          </svg>
+          <span>Scholar</span>
+        </a>
+      </li>
+      <li>
+        <a href={`mailto:${site.email}`} rel="me">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path
+              fill="currentColor"
+              d="M2 4h20c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H2c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2Zm10 9.55L2.4 6.7l-.4-.28V6h20v.42l-.4.28L12 13.55Zm0 2.45L2 9v9h20V9l-10 7Z"
+            />
+          </svg>
+          <span>{site.email}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<style>
+  .section--intro {
+    padding-block: var(--space-7) var(--space-8);
+  }
+
+  .hero-name {
+    font-size: var(--fs-3xl);
+    margin-bottom: var(--space-4);
+    letter-spacing: -0.02em;
+  }
+
+  .hero-bio {
+    font-size: var(--fs-lg);
+    color: var(--color-fg-muted);
+    max-width: 60ch;
+    margin-bottom: var(--space-6);
+  }
+
+  .profile-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .profile-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    color: var(--color-fg);
+    text-decoration: none;
+    font-size: var(--fs-sm);
+    background: var(--color-bg-elevated);
+    transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+  }
+
+  .profile-links a:hover,
+  .profile-links a:focus-visible {
+    border-color: var(--color-border-strong);
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .profile-links svg {
+    width: 1em;
+    height: 1em;
+  }
+
+  @media (max-width: 480px) {
+    .hero-name {
+      font-size: var(--fs-2xl);
+    }
+    .hero-bio {
+      font-size: var(--fs-base);
+    }
+  }
+</style>

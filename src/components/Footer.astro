@@ -1,0 +1,40 @@
+---
+import { site } from '../data/site';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container-wide site-footer__inner">
+    <p>&copy; {year} {site.author}</p>
+    <p>
+      <a
+        href="https://github.com/amitport/amitport.github.io"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Source on GitHub
+      </a>
+    </p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--color-border);
+    padding-block: var(--space-5);
+    color: var(--color-fg-faint);
+    font-size: var(--fs-sm);
+  }
+
+  .site-footer__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  .site-footer a {
+    color: var(--color-fg-muted);
+  }
+</style>

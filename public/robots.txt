@@ -1,3 +1,4 @@
 User-agent: *
-Disallow:
+Allow: /
+
 Sitemap: https://amitport.github.io/sitemap.xml

@@ -1,0 +1,150 @@
+---
+import { projects, type LinkKind } from '../data/projects';
+
+const linkLabel: Record<LinkKind, string> = {
+  website: 'Website',
+  source: 'Source',
+  paper: 'Paper',
+  gitbook: 'Docs',
+};
+
+/**
+ * Deterministic hue from the title so each card's accent stripe is stable
+ * and visually distinct without per-project art.
+ */
+function hueFor(title: string): number {
+  let h = 0;
+  for (const ch of title) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
+  return h % 360;
+}
+---
+
+<section id="projects" class="section">
+  <div class="container-wide">
+    <h2 class="section-title">Selected personal projects</h2>
+    <p class="projects-note">
+      &lt;&lt;&lt; this list is <strong>not</strong> up-to-date &gt;&gt;&gt;
+    </p>
+
+    <ul class="project-grid">
+      {
+        projects.map((project) => (
+          <li class="project-card" style={`--card-hue: ${hueFor(project.title)}`}>
+            <h3 class="project-card__title">{project.title}</h3>
+            <p class="project-card__desc">{project.description}</p>
+            <ul class="project-card__links" aria-label={`Links for ${project.title}`}>
+              {project.links.map((link) =>
+                link.down ? (
+                  <li>
+                    <span class="project-card__link project-card__link--down">
+                      {linkLabel[link.kind]}
+                      <span class="project-card__down"> (currently down)</span>
+                    </span>
+                  </li>
+                ) : (
+                  <li>
+                    <a
+                      class="project-card__link"
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {linkLabel[link.kind]}
+                    </a>
+                  </li>
+                ),
+              )}
+            </ul>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .projects-note {
+    color: var(--color-fg-muted);
+    font-size: var(--fs-sm);
+    margin-top: calc(-1 * var(--space-4));
+    margin-bottom: var(--space-6);
+  }
+
+  .project-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: var(--space-4);
+  }
+
+  .project-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-5);
+    background: var(--color-bg-elevated);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    border-top: 3px solid hsl(var(--card-hue) 55% 60%);
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-1px);
+    border-color: var(--color-border-strong);
+    border-top-color: hsl(var(--card-hue) 60% 50%);
+  }
+
+  .project-card__title {
+    font-size: var(--fs-base);
+    font-family: var(--font-display);
+    word-break: break-word;
+  }
+
+  .project-card__desc {
+    color: var(--color-fg-muted);
+    font-size: var(--fs-sm);
+    line-height: 1.55;
+    flex: 1;
+  }
+
+  .project-card__links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    font-size: var(--fs-xs);
+  }
+
+  .project-card__links a {
+    color: var(--color-fg-muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--color-border-strong);
+    padding-bottom: 1px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .project-card__links a:hover,
+  .project-card__links a:focus-visible {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .project-card__link--down {
+    color: var(--color-fg-faint);
+    text-decoration: line-through;
+    text-decoration-thickness: 1px;
+  }
+
+  .project-card__down {
+    text-decoration: none;
+    font-style: italic;
+    margin-left: 2px;
+  }
+</style>
