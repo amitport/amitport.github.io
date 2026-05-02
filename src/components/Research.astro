@@ -44,6 +44,16 @@ import { site } from '../data/site';
                 {paper.type === 'preprint' && (
                   <span class="badge badge--preprint">preprint</span>
                 )}
+                {paper.code && (
+                  <a
+                    class="research-item__code"
+                    href={paper.code}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Code
+                  </a>
+                )}
               </p>
               {paper.note && <p class="research-item__note">({paper.note})</p>}
             </li>
@@ -135,6 +145,25 @@ import { site } from '../data/site';
     background: var(--color-bg-subtle);
     font-weight: 600;
     text-transform: lowercase;
+  }
+
+  .research-item__code {
+    font-size: var(--fs-xs);
+    text-transform: none;
+    letter-spacing: normal;
+    font-weight: 500;
+    color: var(--color-fg-muted);
+    border-bottom: 1px solid var(--color-border-strong);
+    padding-bottom: 1px;
+    text-decoration: none;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .research-item__code:hover,
+  .research-item__code:focus-visible {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+    text-decoration: none;
   }
 
   .research-item__note {

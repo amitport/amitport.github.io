@@ -1,4 +1,4 @@
-export type LinkKind = 'website' | 'source' | 'gitbook' | 'paper';
+export type LinkKind = 'website' | 'source' | 'gitbook' | 'paper' | 'article';
 
 export interface ProjectLink {
   url: string;
@@ -16,6 +16,22 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    title: 'hadamard-transform',
+    description: 'A Fast Walsh–Hadamard Transform (FWHT) implementation in PyTorch.',
+    links: [{ url: 'https://github.com/amitport/hadamard-transform', kind: 'source' }],
+  },
+  {
+    title: 'EDEN vs TurboQuant',
+    description:
+      'Why a 2021 quantization algorithm quietly outperforms its 2026 successor. Published on Towards Data Science.',
+    links: [
+      {
+        url: 'https://towardsdatascience.com/how-a-2021-quantization-algorithm-quietly-outperforms-its-2026-successor/',
+        kind: 'article',
+      },
+    ],
+  },
   {
     title: 'CardForest.com',
     description: 'Online environment for coding card games',

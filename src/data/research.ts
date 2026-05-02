@@ -35,16 +35,19 @@ interface PaperOverride {
   type?: PaperType;
   venue?: string;
   url?: string;
+  code?: string;
 }
 
 const OVERRIDES: Record<string, PaperOverride> = {
   // Accelerating Federated Learning with Quick Distributed Mean Estimation, ICML '24
   'conf/icml/Ben-BasatVPEBM24': {
     equalContribution: ['Ran Ben-Basat', 'Shay Vargaftik', 'Amit Portnoy'],
+    code: 'https://github.com/amitport/QUIC-FL-Quick-Unbiased-Compression-for-Federated-Learning',
   },
   // EDEN, ICML '22
   'conf/icml/VargaftikBPMBM22': {
     equalContribution: ['Shay Vargaftik', 'Ran Ben Basat', 'Amit Portnoy'],
+    code: 'https://github.com/amitport/EDEN-Distributed-Mean-Estimation',
   },
   // SDR, ACL '22
   'conf/acl/CohenPFI22': {
@@ -53,6 +56,7 @@ const OVERRIDES: Record<string, PaperOverride> = {
   // DRIVE, NeurIPS '21
   'conf/nips/VargaftikBPMBM21': {
     equalContribution: ['Shay Vargaftik', 'Ran Ben-Basat', 'Amit Portnoy'],
+    code: 'https://github.com/amitport/DRIVE-One-bit-Distributed-Mean-Estimation',
   },
   // A generic decentralized trust management framework, Softw. Pract. Exp.
   'journals/spe/FriedmanP15': {
@@ -65,6 +69,7 @@ const OVERRIDES: Record<string, PaperOverride> = {
     type: 'journal',
     venue: "Applied Sciences '22",
     url: 'https://doi.org/10.3390/app12178847',
+    code: 'https://github.com/amitport/Towards-Federated-Learning-with-Byzantine-Robust-Client-Weighting',
   },
 };
 
@@ -85,6 +90,7 @@ export interface Paper {
   url: string;
   type: PaperType;
   note?: string;
+  code?: string;
 }
 
 interface DblpAuthor {
@@ -226,6 +232,7 @@ function parseDblp(xml: string): Paper[] {
       url: override?.url ?? bestUrl(entry.ee),
       type,
       note: noteParts.length > 0 ? noteParts.join(' · ') : undefined,
+      code: override?.code,
     });
   }
 
