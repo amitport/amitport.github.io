@@ -4,7 +4,7 @@ export const site = {
   author: 'Amit Portnoy',
   url: 'https://amitport.github.io',
   email: 'amit.portnoy@gmail.com',
-  bio: 'I am currently pursuing a Ph.D. in computer science, investigating security and privacy issues in distributed machine learning.',
+  bio: 'I work on AI for cybersecurity at Microsoft. Before that, a PhD in quantization, distributed training, and privacy-preserving ML.',
   social: {
     linkedin: 'https://www.linkedin.com/in/amit-portnoy',
     github: 'https://github.com/amitport',
