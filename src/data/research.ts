@@ -47,7 +47,10 @@ const OVERRIDES: Record<string, PaperOverride> = {
     type: 'conference',
     venue: "NeurIPS '26",
     url: 'https://arxiv.org/abs/2605.06014',
-    note: 'Proceedings forthcoming',
+    note: 'Authors are listed alphabetically · Proceedings forthcoming',
+  },
+  'journals/corr/abs-2604-18555': {
+    note: 'Authors are listed alphabetically',
   },
   // Accelerating Federated Learning with Quick Distributed Mean Estimation, ICML '24
   'conf/icml/Ben-BasatVPEBM24': {

@@ -40,7 +40,11 @@ import { site } from '../data/site';
                 ))}
               </p>
               <p class="research-item__venue">
-                <span>{paper.venue}</span>
+                <span
+                  class:list={{
+                    'research-item__venue--published': paper.type !== 'preprint',
+                  }}
+                >{paper.venue}</span>
                 {paper.type === 'preprint' && (
                   <span class="badge badge--preprint">preprint</span>
                 )}
@@ -116,7 +120,7 @@ import { site } from '../data/site';
   }
 
   .research-item__authors sup {
-    color: var(--color-accent);
+    color: inherit;
     font-weight: 600;
     margin-left: 1px;
   }
@@ -132,6 +136,11 @@ import { site } from '../data/site';
     gap: var(--space-2);
     flex-wrap: wrap;
     margin: 0;
+  }
+
+  .research-item__venue--published {
+    color: var(--color-fg-muted);
+    font-weight: 700;
   }
 
   .badge {

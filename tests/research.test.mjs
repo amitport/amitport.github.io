@@ -51,13 +51,14 @@ function assertFallback({ papers, warnings }) {
   assert.equal(accepted.type, 'conference');
   assert.equal(accepted.venue, "NeurIPS '26");
   assert.equal(accepted.url, 'https://arxiv.org/abs/2605.06014');
-  assert.equal(accepted.note, 'Proceedings forthcoming');
+  assert.equal(accepted.note, 'Authors are listed alphabetically · Proceedings forthcoming');
   assert.equal(accepted.authors.length, 5);
   const eden = papers.find((p) => p.key === 'conf/icml/VargaftikBPMBM22');
   assert.equal(eden.authors.filter((a) => a.equal).length, 3);
   assert.equal(eden.note, '* Equal contribution');
   assert.ok(eden.code);
   assert.equal(papers.find((p) => p.key === 'journals/corr/abs-2604-18555').type, 'preprint');
+  assert.equal(papers.find((p) => p.key === 'journals/corr/abs-2604-18555').note, 'Authors are listed alphabetically');
   assert.equal(papers.find((p) => p.key === 'journals/spe/FriedmanP15').note, 'Authors are listed alphabetically');
   assert.ok(papers.every((p, i) => i === 0 || papers[i - 1].year >= p.year));
 }
@@ -116,6 +117,8 @@ test('prefers live records and preserves overrides, URL selection, and deduplica
   assert.equal(papers[1].key, 'journals/corr/abs-2605-06014');
   assert.equal(papers[2].key, 'journals/corr/abs-2604-18555');
   assert.equal(papers.find((p) => p.key === 'journals/corr/abs-2605-06014').venue, "NeurIPS '26");
+  assert.equal(papers[1].note, 'Authors are listed alphabetically · Proceedings forthcoming');
+  assert.equal(papers[2].note, 'Authors are listed alphabetically');
   assert.equal(papers.find((p) => p.key === 'conf/acl/CohenPFI22').authors.filter((a) => a.equal).length, 2);
   assert.equal(papers.find((p) => p.key === 'journals/corr/abs-2004-04986').url, 'https://doi.org/10.3390/app12178847');
 });
