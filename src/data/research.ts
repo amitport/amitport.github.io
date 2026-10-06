@@ -1,4 +1,5 @@
-import { XMLParser } from 'fast-xml-parser';
+import { XMLParser, XMLValidator } from 'fast-xml-parser';
+import { publicationSnapshot } from './research-snapshot';
 
 /**
  * Build-time fetch of the author's publication list from DBLP.
@@ -7,6 +8,8 @@ import { XMLParser } from 'fast-xml-parser';
  * Edit `DBLP_PID` if the author identifier changes.
  * Edit `SKIP_KEYS` for the rare case where a preprint and its published version
  *   have different titles and the auto-dedupe can't tell they're the same work.
+ * If DBLP is unavailable or returns a bot challenge, use `research-snapshot.ts`.
+ * Keep that snapshot current when adding publications; overrides apply to both sources.
  */
 const DBLP_PID = '159/8806';
 const DBLP_URL = `https://dblp.org/pid/${DBLP_PID}.xml`;
@@ -39,6 +42,13 @@ interface PaperOverride {
 }
 
 const OVERRIDES: Record<string, PaperOverride> = {
+  // Accepted to NeurIPS '26; keep the preprint link until proceedings are available.
+  'journals/corr/abs-2605-06014': {
+    type: 'conference',
+    venue: "NeurIPS '26",
+    url: 'https://arxiv.org/abs/2605.06014',
+    note: 'Proceedings forthcoming',
+  },
   // Accelerating Federated Learning with Quick Distributed Mean Estimation, ICML '24
   'conf/icml/Ben-BasatVPEBM24': {
     equalContribution: ['Ran Ben-Basat', 'Shay Vargaftik', 'Amit Portnoy'],
@@ -92,6 +102,10 @@ export interface Paper {
   note?: string;
   code?: string;
 }
+
+export type PaperSnapshot = Omit<Paper, 'authors' | 'note' | 'code'> & {
+  authors: string[];
+};
 
 interface DblpAuthor {
   '#text': string;
@@ -169,6 +183,9 @@ function venueFor(entry: DblpEntry, type: PaperType): string {
 }
 
 function parseDblp(xml: string): Paper[] {
+  if (XMLValidator.validate(xml) !== true) {
+    throw new Error('DBLP returned invalid XML');
+  }
   const parser = new XMLParser({
     ignoreAttributes: false,
     attributeNamePrefix: '@_',
@@ -176,9 +193,12 @@ function parseDblp(xml: string): Paper[] {
     isArray: (name) => ['author', 'ee', 'r'].includes(name),
   });
   const data = parser.parse(xml);
-  const records: Array<Record<string, DblpEntry>> = data?.dblpperson?.r ?? [];
+  const records: Array<Record<string, DblpEntry>> | undefined = data?.dblpperson?.r;
+  if (!Array.isArray(records) || records.length === 0) {
+    throw new Error('DBLP response contains no bibliography records (possibly a bot challenge)');
+  }
 
-  const papers: Paper[] = [];
+  const papers: PaperSnapshot[] = [];
   for (const rec of records) {
     const entry: DblpEntry | undefined =
       rec.inproceedings ?? rec.article ?? rec.incollection ?? rec.book;
@@ -187,8 +207,6 @@ function parseDblp(xml: string): Paper[] {
     const key = entry['@_key'];
     if (SKIP_KEYS.has(key)) continue;
 
-    const override = OVERRIDES[key];
-
     const isInproceedings = Boolean(rec.inproceedings);
     const isCorr = String(entry.journal ?? '') === 'CoRR';
     const dblpType: PaperType = isInproceedings
@@ -196,48 +214,71 @@ function parseDblp(xml: string): Paper[] {
       : isCorr
         ? 'preprint'
         : 'journal';
-    const type: PaperType = override?.type ?? dblpType;
-
     const rawAuthors = entry.author.map((a) =>
       cleanAuthor(typeof a === 'string' ? a : a['#text']),
     );
 
-    const equalSet = new Set(override?.equalContribution ?? []);
-    const authors: PaperAuthor[] = rawAuthors.map((name) => ({
-      name,
-      equal: equalSet.has(name),
-    }));
-
-    // Warn loudly during build if an override references a name that's not on the paper:
-    // catches typos and DBLP author renames so the markers don't silently disappear.
-    for (const expected of equalSet) {
-      if (!rawAuthors.includes(expected)) {
-        console.warn(
-          `[research] Override for ${key}: equalContribution name "${expected}" not found in DBLP authors [${rawAuthors.join(', ')}]`,
-        );
-      }
-    }
-
-    const hasEqual = authors.some((a) => a.equal);
-    const noteParts: string[] = [];
-    if (hasEqual) noteParts.push('* Equal contribution');
-    if (override?.note) noteParts.push(override.note);
-
     papers.push({
       key,
-      title: override?.title ?? cleanTitle(String(entry.title)),
-      authors,
+      title: cleanTitle(String(entry.title)),
+      authors: rawAuthors,
       year: Number(entry.year),
-      venue: override?.venue ?? venueFor(entry, type),
-      url: override?.url ?? bestUrl(entry.ee),
-      type,
-      note: noteParts.length > 0 ? noteParts.join(' · ') : undefined,
-      code: override?.code,
+      venue: venueFor(entry, dblpType),
+      url: bestUrl(entry.ee),
+      type: dblpType,
     });
   }
+  if (papers.length === 0) {
+    throw new Error('DBLP response contains no usable publications');
+  }
+  return preparePapers(papers);
+}
+
+function preparePapers(entries: PaperSnapshot[]): Paper[] {
+  const publishedTitles = new Set(
+    entries.filter((p) => p.type !== 'preprint').map((p) => normalizeTitle(p.title)),
+  );
+  const papers = entries
+    .filter((p) => !SKIP_KEYS.has(p.key))
+    .filter((p) => !(p.type === 'preprint' && publishedTitles.has(normalizeTitle(p.title))))
+    .map((paper): Paper => {
+      const { key, authors: rawAuthors } = paper;
+      const override = OVERRIDES[key];
+      const equalSet = new Set(override?.equalContribution ?? []);
+      const authors: PaperAuthor[] = rawAuthors.map((name) => ({
+        name,
+        equal: equalSet.has(name),
+      }));
+
+      // Warn loudly during build if an override references a name that's not on the paper:
+      // catches typos and DBLP author renames so the markers don't silently disappear.
+      for (const expected of equalSet) {
+        if (!rawAuthors.includes(expected)) {
+          console.warn(
+            `[research] Override for ${key}: equalContribution name "${expected}" not found in DBLP authors [${rawAuthors.join(', ')}]`,
+          );
+        }
+      }
+
+      const hasEqual = authors.some((a) => a.equal);
+      const noteParts: string[] = [];
+      if (hasEqual) noteParts.push('* Equal contribution');
+      if (override?.note) noteParts.push(override.note);
+
+      return {
+        ...paper,
+        title: override?.title ?? paper.title,
+        authors,
+        venue: override?.venue ?? paper.venue,
+        url: override?.url ?? paper.url,
+        type: override?.type ?? paper.type,
+        note: noteParts.length > 0 ? noteParts.join(' · ') : undefined,
+        code: override?.code,
+      };
+    });
 
   // Drop CoRR preprints that have a published twin with the same title.
-  const publishedTitles = new Set(
+  const overriddenPublishedTitles = new Set(
     papers
       .filter((p) => p.type !== 'preprint')
       .map((p) => normalizeTitle(p.title)),
@@ -245,26 +286,32 @@ function parseDblp(xml: string): Paper[] {
 
   return papers
     .filter(
-      (p) => !(p.type === 'preprint' && publishedTitles.has(normalizeTitle(p.title))),
+      (p) => !(p.type === 'preprint' && overriddenPublishedTitles.has(normalizeTitle(p.title))),
     )
-    .sort((a, b) => b.year - a.year || a.title.localeCompare(b.title));
+    // Within each year, list conference/journal papers before standalone preprints.
+    .sort(
+      (a, b) =>
+        b.year - a.year ||
+        Number(a.type === 'preprint') - Number(b.type === 'preprint') ||
+        a.title.localeCompare(b.title),
+    );
 }
 
 async function loadPapers(): Promise<Paper[]> {
   try {
     const res = await fetch(DBLP_URL, {
       headers: { Accept: 'application/xml' },
+      signal: AbortSignal.timeout(10_000),
     });
     if (!res.ok) throw new Error(`DBLP responded ${res.status}`);
     const xml = await res.text();
     return parseDblp(xml);
   } catch (err) {
-    // Don't fail the whole build if DBLP is unreachable (e.g. offline dev).
     console.warn(
-      `[research] Failed to fetch DBLP feed (${DBLP_URL}); rendering empty list. Cause:`,
+      `[research] Failed to load DBLP feed (${DBLP_URL}); using checked-in publication snapshot. Cause:`,
       err,
     );
-    return [];
+    return preparePapers(publicationSnapshot);
   }
 }
 

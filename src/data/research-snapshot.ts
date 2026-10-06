@@ -1,0 +1,88 @@
+import type { PaperSnapshot } from './research';
+
+// Seeded from the deployed site's nine publications on 2026-10-06.
+// Store bibliography metadata here, not equal-contribution or acceptance overrides.
+// Update this fallback when adding publications; live DBLP data remains preferred.
+export const publicationSnapshot: PaperSnapshot[] = [
+  {
+    key: 'journals/corr/abs-2604-18555',
+    title: 'A Note on TurboQuant and the Earlier DRIVE/EDEN Line of Work',
+    authors: ['Ran Ben-Basat', 'Yaniv Ben-Itzhak', 'Gal Mendelson', 'Michael Mitzenmacher', 'Amit Portnoy', 'Shay Vargaftik'],
+    year: 2026,
+    venue: 'arXiv 2604.18555',
+    url: 'https://doi.org/10.48550/arXiv.2604.18555',
+    type: 'preprint',
+  },
+  {
+    key: 'journals/corr/abs-2605-06014',
+    title: 'Quantizing With Randomized Hadamard Transforms: Efficient Heuristic Now Proven',
+    authors: ['Ran Ben-Basat', 'William Kuszmaul', 'Michael Mitzenmacher', 'Amit Portnoy', 'Shay Vargaftik'],
+    year: 2026,
+    venue: 'arXiv 2605.06014',
+    url: 'https://doi.org/10.48550/arXiv.2605.06014',
+    type: 'preprint',
+  },
+  {
+    key: 'conf/icml/Ben-BasatVPEBM24',
+    title: 'Accelerating Federated Learning with Quick Distributed Mean Estimation',
+    authors: ['Ran Ben-Basat', 'Shay Vargaftik', 'Amit Portnoy', 'Gil Einziger', 'Yaniv Ben-Itzhak', 'Michael Mitzenmacher'],
+    year: 2024,
+    venue: "ICML '24",
+    url: 'https://openreview.net/forum?id=gWEwIlZrbQ',
+    type: 'conference',
+  },
+  {
+    key: 'journals/corr/abs-2408-01993',
+    title: 'Towards Automatic Hands-on-Keyboard Attack Detection Using LLMs in EDR Solutions',
+    authors: ['Amit Portnoy', 'Ehud Azikri', 'Shay Kels'],
+    year: 2024,
+    venue: 'arXiv 2408.01993',
+    url: 'https://doi.org/10.48550/arXiv.2408.01993',
+    type: 'preprint',
+  },
+  {
+    key: 'conf/icml/VargaftikBPMBM22',
+    title: 'EDEN: Communication-Efficient and Robust Distributed Mean Estimation for Federated Learning',
+    authors: ['Shay Vargaftik', 'Ran Ben Basat', 'Amit Portnoy', 'Gal Mendelson', 'Yaniv Ben-Itzhak', 'Michael Mitzenmacher'],
+    year: 2022,
+    venue: "ICML '22",
+    url: 'https://proceedings.mlr.press/v162/vargaftik22a.html',
+    type: 'conference',
+  },
+  {
+    key: 'conf/acl/CohenPFI22',
+    title: 'SDR: Efficient Neural Re-ranking using Succinct Document Representation',
+    authors: ['Nachshon Cohen', 'Amit Portnoy', 'Besnik Fetahu', 'Amir Ingber'],
+    year: 2022,
+    venue: "ACL '22",
+    url: 'https://aclanthology.org/2022.acl-long.457',
+    type: 'conference',
+  },
+  {
+    key: 'conf/nips/VargaftikBPMBM21',
+    title: 'DRIVE: One-bit Distributed Mean Estimation',
+    authors: ['Shay Vargaftik', 'Ran Ben-Basat', 'Amit Portnoy', 'Gal Mendelson', 'Yaniv Ben-Itzhak', 'Michael Mitzenmacher'],
+    year: 2021,
+    venue: "NeurIPS '21",
+    url: 'https://proceedings.neurips.cc/paper/2021/hash/0397758f8990c1b41b81b43ac389ab9f-Abstract.html',
+    type: 'conference',
+  },
+  {
+    key: 'journals/corr/abs-2004-04986',
+    title: 'Towards Federated Learning With Byzantine-Robust Client Weighting',
+    authors: ['Amit Portnoy', 'Danny Hendler'],
+    year: 2022,
+    venue: "Applied Sciences '22",
+    url: 'https://doi.org/10.3390/app12178847',
+    type: 'journal',
+  },
+  {
+    key: 'journals/spe/FriedmanP15',
+    title: 'A generic decentralized trust management framework',
+    authors: ['Roy Friedman', 'Amit Portnoy'],
+    year: 2015,
+    venue: "Softw. Pract. Exp. '15",
+    url: 'https://doi.org/10.1002/spe.2226',
+    type: 'journal',
+  },
+];
